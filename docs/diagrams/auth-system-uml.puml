@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "com.example.auth" {
+  class AuthApplication {
+    +main(args: String[]): void
+  }
+}
+
+package "com.example.auth.controller" {
+  class AuthController {
+    +showLoginForm(): String
+    +processLogin(LoginRequest, Model): String
+  }
+}
+
+package "com.example.auth.dto" {
+  class LoginRequest {
+    -username: String
+    -password: String
+    +getUsername(): String
+    +getPassword(): String
+  }
+}
+
+package "org.springframework.ui" {
+  class Model {
+    +addAttribute(String, Object): Model
+  }
+}
+
+AuthController --> LoginRequest
+AuthController --> Model
+@enduml
